@@ -1,0 +1,82 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/vegbg"
+    android:gravity="bottom|center_horizontal|top"
+    android:orientation="vertical"
+    tools:context="com.skew.skytouch.MainActivity" >
+
+    <WebView
+        android:id="@+id/webView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+<ScrollView
+        android:id="@+id/scrollmainmenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Restro"
+        android:gravity="center"
+        android:background="@color/White"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/maroon" />
+
+    <Button
+        android:id="@+id/FoodMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FoodMenu"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Feedback"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/Todayspecial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Todayspecial"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/Registerme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register to Order"
+        android:textColor="@color/black" 
+		android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/yourorders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Track Your Orders"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/closeapp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Close Application"
+        android:textColor="@color/maroon"
+        android:textStyle="bold" />
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>

@@ -1,0 +1,17 @@
+<resources>
+    <color name="black">#000000</color>
+    <color name="White">#FFF</color>
+	<color name="blue">#1E90FF</color>
+	<color name="green1">#00FF00</color>
+	<color name="blue1">#4000FF</color>
+	<color name="green">#298A08</color>
+	<color name="orange">#B43104</color>
+	<color name="darkblue">#191970</color>
+	<color name="maroon">#990000</color>	
+	<color name="gray">#404040</color>
+	<color name="blue_logo">#1E73FF</color>
+	<color name="green12">#81e0a9</color>
+	<color name="evenrow">#01AFEF</color>
+	<color name="oddrow">#CCFFFF</color>
+	
+</resources>

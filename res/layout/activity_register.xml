@@ -1,0 +1,77 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/vegbgg"
+    android:gravity="bottom|top"
+    android:orientation="vertical"
+    tools:context="com.skew.skytouch.RegisterActivity" >
+    <EditText
+        android:id="@+id/fname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.97"
+        android:hint="@string/fname"
+        android:inputType="textPersonName"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White" />
+
+	<EditText
+	    android:id="@+id/lname"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="0.97"
+	    android:hint="@string/lname"
+	    android:inputType="textPersonName"
+	    android:textColor="@color/White"
+	    android:textColorHint="@color/White" />
+    
+    <EditText
+        android:id="@+id/mobileno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.97"
+        android:hint="@string/mobileno"
+        android:inputType="phone"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.97"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White" />
+
+    <EditText
+        android:id="@+id/dob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.97"
+        android:hint="@string/dob"
+        android:inputType="date"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White" />
+    
+       <EditText
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.97"
+        android:hint="address"
+        android:inputType="textPostalAddress"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White" />
+
+    <Button
+        android:id="@+id/registerbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:typeface="sans" />
+</LinearLayout>

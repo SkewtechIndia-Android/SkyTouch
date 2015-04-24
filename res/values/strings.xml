@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Restro</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_food_menu">Restro</string>
+    <string name="title_activity_dishes">Restro</string>
+    <string name="title_activity_order">Restro</string>
+    <string name="title_activity_register">Restro</string>
+    <string name="fname">FirstName</string>
+    <string name="lname">LastName</string>
+    <string name="mobileno">Mobile No</string>
+    <string name="email">Email Address</string>
+    <string name="dob">DD/MM/YYY</string>
+    <string name="title_activity_today_special">Restro</string>
+    <string name="title_activity_your_orders">Restro</string>
+    <string name="title_activity_feedback">Restro</string>
+
+</resources>
