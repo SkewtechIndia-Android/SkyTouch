@@ -1,5 +1,7 @@
 package com.skew.skytouch;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ import android.telephony.TelephonyManager;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.Settings.Secure;
@@ -82,54 +85,60 @@ public class RegisterActivity extends ActionBarActivity {
 		         mobileno_val = mobileno.getText().toString();
 		         email_val = emailid.getText().toString();
 		         add_val = address.getText().toString();
-//				Toast.makeText(getApplicationContext(), lastname+mobile+email, Toast.LENGTH_SHORT).show();
-//				Toast.makeText(getApplicationContext(), deviceID, Toast.LENGTH_SHORT).show();
-//				Log.d("androidID", deviceID);
-//				finish();
 				 insert();
 				 finish();
 				 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
 				 startActivity(intent);
-			/*}else{
-				Toast.makeText(getApplicationContext(),"Please Register to Order" ,Toast.LENGTH_LONG).show();
-				finish();
-				Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
-				startActivity(intent);
-			}*/
-			
+				
 		}
 	});
 //	Toast.makeText(getApplicationContext(), fname.toString()+lname.toString()+mobileno.toString()+email.toString()+address.toString(), Toast.LENGTH_LONG).show();	
 	}
 	public void insert()
     {
-//		Toast.makeText(getApplicationContext(), fname_val+lname_val+mobileno_val+email_val+add_val+deviceID, Toast.LENGTH_LONG).show();
-    	ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+		try
+    	{
+			/*AssetManager am = this.getResources().getAssets();
+			Properties properties = new Properties();
+	//		InputStream custDetails = am.open("customerdetails.properties",Context.MODE_PRIVATE);
+			InputStream custDetails  = getBaseContext().getAssets().open("customerdetails.properties");
+			properties.load(custDetails);
+			// Values written to the file
+			properties.setProperty("fname", "vinod");
+			properties.setProperty("lname", "kadam");
+			properties.setProperty("mobileno", "9766361626");
+			properties.setProperty("emailid", "vinodkadam@skewtech.com");
+			properties.setProperty("DOB", "26/01/1986");
+			properties.setProperty("address", "Auragabad");
+			properties.setProperty("deviceid", "deviceid");
+			properties.store(new FileOutputStream("customerdetails.properties"), null);*/
+			
+		// Values sent to server
+		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
     	nameValuePairs.add(new BasicNameValuePair("fname",fname_val));
     	nameValuePairs.add(new BasicNameValuePair("lname",lname_val));
     	nameValuePairs.add(new BasicNameValuePair("mobileno",mobileno_val));
     	nameValuePairs.add(new BasicNameValuePair("emailid",email_val));
     	nameValuePairs.add(new BasicNameValuePair("address",add_val));
     	nameValuePairs.add(new BasicNameValuePair("deviceid",deviceID));
-    	try
-    	{
+    	nameValuePairs.add(new BasicNameValuePair("restoid","rs"));
+    	
     		HttpClient httpclient = new DefaultHttpClient();
-//	        HttpPost httppost = new HttpPost("http://localhost/leadgen/submitlead.php");
 //	        HttpPost httppost = new HttpPost("http://10.0.2.2/leadgen/submitlead.php");
-	        HttpPost httppost = new HttpPost("http://meghae.com/resto/userreg.php");
-	        // 192.186.194.131 
+	        HttpPost httppost = new HttpPost("http://meghawatersuppliers.com/Restro/admin/userreg.php");
 	        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 	        HttpResponse response = httpclient.execute(httppost); 
 	        HttpEntity entity = response.getEntity();
 	        is = entity.getContent();
 	        Log.e("pass 1", "connection success ");
+	        Toast.makeText(getApplicationContext(),"Thanks for Registration!!!" ,Toast.LENGTH_LONG).show();
 	        
 	}
         catch(Exception e)
 	{
         	Log.e("Fail 1", e.toString());
 //	    	Toast.makeText(getApplicationContext(), e.getMessage(),Toast.LENGTH_LONG).show();
-        	Toast.makeText(getApplicationContext(),"No Internet Connection" ,Toast.LENGTH_LONG).show();
+        	Toast.makeText(getApplicationContext(),"Oops!!! Something went wrong" ,Toast.LENGTH_LONG).show();
 	}     
         
     }
