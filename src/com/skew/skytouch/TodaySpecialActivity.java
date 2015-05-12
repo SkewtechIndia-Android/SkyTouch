@@ -2,10 +2,12 @@ package com.skew.skytouch;
 
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
+import android.widget.Toast;
 
 public class TodaySpecialActivity extends ActionBarActivity {
 
@@ -16,10 +18,24 @@ public class TodaySpecialActivity extends ActionBarActivity {
 		
 		// check if internet connection is available
 		
-		WebView mWebView = null;
-	    mWebView = (WebView) findViewById(R.id.webViewToday);
-	    mWebView.getSettings().setJavaScriptEnabled(true);
-	    mWebView.loadUrl("http://meghae.com/resto/admin/todayspecial.php");
+		// get Connectivity Manager object to check connection
+        ConnectivityManager connec = (ConnectivityManager)getSystemService(getBaseContext().CONNECTIVITY_SERVICE);
+            if ( connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTED ||
+                 connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.CONNECTED ) {
+                // if connected with internet
+            	WebView mWebView = null;
+            	mWebView = (WebView) findViewById(R.id.webViewToday);
+            	mWebView.getSettings().setJavaScriptEnabled(true);
+            	mWebView.loadUrl("http://meghawatersuppliers.com/Restro/admin/todayspecial.php?restoid=rs");
+            } else if ( 
+            connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.DISCONNECTED ||
+            connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.DISCONNECTED  ) {
+            Toast.makeText(this, " No Internet Connection", Toast.LENGTH_LONG).show();
+            
+            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+			  startActivity(intent);
+			  finish();
+          }
 	}
 	    
 	public void onBackPressed() {
