@@ -22,6 +22,7 @@ public class MainActivity extends ActionBarActivity {
 	Button todayspecialbtn;
 	Button yourorders;
 	Button closeapp;
+	Button tablebooking;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,6 +41,16 @@ public class MainActivity extends ActionBarActivity {
 	    registerMe = (Button) findViewById(R.id.Registerme);
 	    yourorders = (Button) findViewById(R.id.yourorders);
 	    closeapp = (Button) findViewById(R.id.closeapp);
+	    tablebooking = (Button) findViewById(R.id.bookatable);
+	    
+	    tablebooking.setOnClickListener(new OnClickListener() {
+			public void onClick(View arg0) {
+				  finish();
+				  Intent intent = new Intent(getApplicationContext(),BookatableActivity.class);
+				  startActivity(intent);
+			}
+		});
+		
 	    
 	    closeapp.setOnClickListener(new OnClickListener() {
 			public void onClick(View arg0) {
@@ -50,7 +61,6 @@ public class MainActivity extends ActionBarActivity {
 	    
 	    yourorders.setOnClickListener(new OnClickListener() {
 			public void onClick(View arg0) {
-				  
 				  Intent intent = new Intent(getApplicationContext(),YourOrdersActivity.class);
 				  startActivity(intent);
 				  finish();
@@ -59,7 +69,6 @@ public class MainActivity extends ActionBarActivity {
 	    
 		foodmenu.setOnClickListener(new OnClickListener() {
 			public void onClick(View arg0) {
-				  
 				  Intent intent = new Intent(getApplicationContext(),FoodMenuActivity.class);
 				  startActivity(intent);
 				  finish();
@@ -84,7 +93,6 @@ public class MainActivity extends ActionBarActivity {
 		
 		registerMe.setOnClickListener(new OnClickListener() {
 			public void onClick(View arg0) {
-				  
 				  Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
 				  startActivity(intent);
 				  finish();
