@@ -2,6 +2,7 @@ package com.skew.skytouch;
 
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.Settings.Secure;
@@ -9,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 public class YourOrdersActivity extends ActionBarActivity {
 	WebView webView;
@@ -21,11 +23,25 @@ public class YourOrdersActivity extends ActionBarActivity {
 		StrictMode.setThreadPolicy(policy);
 		// Test if net connection available then go to url otherwise no
 		deviceid = Secure.getString(getApplicationContext().getContentResolver(), Secure.ANDROID_ID);
-		String url = "http://meghae.com/resto/admin/yourorder.php"+"?"+"deviceid="+deviceid;
+		
+		 ConnectivityManager connec = (ConnectivityManager)getSystemService(getBaseContext().CONNECTIVITY_SERVICE);
+         if ( connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTED ||
+              connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.CONNECTED ) {
+             // if connected with internet
+    	String url = "http://meghawatersuppliers.com/Restro/admin/yourorder.php"+"?"+"deviceid="+deviceid;
 		webView = (WebView) findViewById(R.id.webVieworders);
 		webView.getSettings().setJavaScriptEnabled(true);
 		webView.setWebViewClient(new WebViewClient());
 		webView.loadUrl(url);
+         } else if ( 
+	              connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.DISCONNECTED ||
+	              connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.DISCONNECTED  ) {
+	              Toast.makeText(this, " No Internet Connection", Toast.LENGTH_LONG).show();
+	              
+	              Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+				  startActivity(intent);
+				  finish();
+	            }
 	}
 	public void onBackPressed() {
 	    // Do Here what ever you want do on back press;
