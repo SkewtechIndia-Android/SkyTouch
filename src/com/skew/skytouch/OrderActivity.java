@@ -1,7 +1,9 @@
 package com.skew.skytouch;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -244,18 +246,55 @@ public class OrderActivity extends ActionBarActivity {
 				deviceid = Secure.getString(getApplicationContext().getContentResolver(), Secure.ANDROID_ID);
 				orderDesc = FoodMenuActivity.order.toString();
 		        billamt = String.valueOf(FoodMenuActivity.Bill);
-				insert();
+				// check if client is registered
+//		        InputStream input = null;
+		        try{
+					/*Properties prop = new Properties();
+					input = getBaseContext().getAssets().open("customerdetails.properties");
+				 		// load a properties file
+				 		if(input!=null){
+				 			prop.load(input);
+							// get the values
+				 			String deviceidtemp = prop.getProperty("deviceid").trim();
+				 			Toast.makeText(getApplicationContext(),"Registered: "+deviceidtemp,Toast.LENGTH_LONG).show();
+				 			
+				 		}*/
+				 			// Add code to check the user properties
+				 		/*	if(deviceidtemp.isEmpty()){
+				 				throw new FileNotFoundException();
+				 			}else{
+				 			String fnametemp = prop.getProperty("fname").trim();
+							String lnametemp = prop.getProperty("lname").trim();
+							String mobilenotemp = prop.getProperty("mobileno").trim();
+							String addresstemp = prop.getProperty("address").trim();
+							if(fnametemp.isEmpty()||lnametemp.isEmpty()||mobilenotemp.isEmpty()||addresstemp.isEmpty()){
+									throw new FileNotFoundException();
+							}
+				 		}*/
+	//			 		}
+		        insert();
 				FoodMenuActivity.order.clear();
 				FoodMenuActivity.Bill = (float) 0.00;
-//				finish();
 				Intent intent = new Intent(getApplicationContext(),FoodMenuActivity.class);
 				startActivity(intent);
 				finish();
-				/*}else{
-					Toast.makeText(getApplicationContext(),"Please Register to Order" ,Toast.LENGTH_LONG).show();
-					finish();
+				}/*catch(FileNotFoundException fe){
+		    		Log.e("Not Registered", fe.toString());
+		        	Toast.makeText(getApplicationContext(),"Please Complete Registration" ,Toast.LENGTH_LONG).show();	
+		        	finish();
 					Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
 					startActivity(intent);
+		        }*/catch(Exception e){
+		        	Log.e("oops Something went wrong", e.toString());
+		        	Toast.makeText(getApplicationContext(),"oops Something went wrong!!!" ,Toast.LENGTH_LONG).show();
+		        }/*finally {
+					if (input != null) {
+						try {	
+							input.close();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
 				}*/
 			}
 		});
@@ -264,27 +303,44 @@ public class OrderActivity extends ActionBarActivity {
 	}
 	public void insert()
     {
-    	ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+		Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
+		// Check if the user is registered
+		try{
+		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+    	// Add resturant name here 
+//    	nameValuePairs.add(new BasicNameValuePair("resturant","skytouch"));
     	nameValuePairs.add(new BasicNameValuePair("userid",deviceid));
     	nameValuePairs.add(new BasicNameValuePair("orderdesc",orderDesc));
     	nameValuePairs.add(new BasicNameValuePair("billamount",billamt));
-    	try
-    	{
+    	nameValuePairs.add(new BasicNameValuePair("restoid","rs"));
+    	/*try
+    	{*/
     		HttpClient httpclient = new DefaultHttpClient();
-	        HttpPost httppost = new HttpPost("http://meghae.com/resto/order.php");
+	        HttpPost httppost = new HttpPost("http://meghawatersuppliers.com/Restro/admin/order.php");
 	        // 192.186.194.131 
 	        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 	        HttpResponse response = httpclient.execute(httppost); 
 	        HttpEntity entity = response.getEntity();
 	        is = entity.getContent();
 	        Log.e("pass 1", "connection success ");
+	        Toast.makeText(getApplicationContext(),deviceid+orderDesc+billamt, Toast.LENGTH_LONG).show();
 	        Toast.makeText(getApplicationContext(), "Order Submitted", Toast.LENGTH_LONG).show();
     	}
-        catch(Exception e)
-	{
-        	Log.e("Fail 1", e.toString());
+		catch(NullPointerException ne){
+			Log.e("Null Pointer", ne.toString());
+        	Toast.makeText(getApplicationContext(),"Please get Registered" ,Toast.LENGTH_LONG).show();	
+        	finish();
+		//	Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
+			startActivity(intent);
+		}
+        catch(UnknownHostException ue){
+        	Log.e("No Internet", ue.toString());
         	Toast.makeText(getApplicationContext(),"No Internet Connection" ,Toast.LENGTH_LONG).show();
-	}     
+        }   
+    	catch(Exception e){
+        	Log.e("oops Something went wrong", e.toString());
+        	Toast.makeText(getApplicationContext(),"oops Something went wrong!!!" ,Toast.LENGTH_LONG).show();
+        }
         
     }
 
