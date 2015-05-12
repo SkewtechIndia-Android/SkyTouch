@@ -12,9 +12,11 @@
     <string name="lname">LastName</string>
     <string name="mobileno">Mobile No</string>
     <string name="email">Email Address</string>
-    <string name="dob">DD/MM/YYY</string>
+    <string name="dob">DD/MM/YYYY</string>
     <string name="title_activity_today_special">Restro</string>
     <string name="title_activity_your_orders">Restro</string>
     <string name="title_activity_feedback">Restro</string>
+    <string name="title_activity_bookatable">Restro</string>
+    <string name="address">Address</string>
 
 </resources>

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/vegbg"
+    android:background="@drawable/bgwoodd"
     android:gravity="bottom|center_horizontal|top"
     android:orientation="vertical"
     tools:context="com.skew.skytouch.MainActivity" >
@@ -35,6 +35,13 @@
         android:layout_height="wrap_content"
         android:text="FoodMenu"
         android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/bookatable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Book a Table"
         android:textStyle="bold" />
 
     <Button

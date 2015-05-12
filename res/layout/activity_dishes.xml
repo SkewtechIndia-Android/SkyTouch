@@ -3,14 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-<TableLayout 
+
+<TableLayout
     android:id="@+id/dishtable"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/vegbg"
+    android:background="@drawable/vegbgg"
     android:overScrollMode="ifContentScrolls"
     android:scrollbars="horizontal|vertical"
     tools:context="com.skew.skytouch.DishesActivity" >
+
   	<TableRow
             android:id="@+id/tableRow1"
             android:layout_width="wrap_content"
@@ -23,7 +25,7 @@
   	    android:layout_height="wrap_content"
   	    android:layout_gravity="bottom"
   	    android:text="Review Order"
-  	    android:textColor="@color/maroon"
+  	    android:textColor="@color/White"
   	    android:textStyle="bold" />
 
     </TableLayout>
