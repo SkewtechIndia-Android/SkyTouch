@@ -58,7 +58,7 @@ public class FeedbackActivity extends ActionBarActivity {
 	              connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.DISCONNECTED ||
 	              connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.DISCONNECTED  ) {
 	              Toast.makeText(this, " No Internet Connection", Toast.LENGTH_LONG).show();
-	              Intent intent = new Intent(getApplicationContext(),FoodMenuActivity.class);
+	              Intent intent = new Intent(getApplicationContext(),MainActivity.class);
 				  startActivity(intent);
 				  finish();
 	            }
