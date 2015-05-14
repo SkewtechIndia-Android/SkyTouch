@@ -323,7 +323,7 @@ public class OrderActivity extends ActionBarActivity {
 	        HttpEntity entity = response.getEntity();
 	        is = entity.getContent();
 	        Log.e("pass 1", "connection success ");
-	        Toast.makeText(getApplicationContext(),deviceid+orderDesc+billamt, Toast.LENGTH_LONG).show();
+	//        Toast.makeText(getApplicationContext(),deviceid+orderDesc+billamt, Toast.LENGTH_LONG).show();
 	        Toast.makeText(getApplicationContext(), "Order Submitted", Toast.LENGTH_LONG).show();
     	}
 		catch(NullPointerException ne){
